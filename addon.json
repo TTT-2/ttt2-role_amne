@@ -1,0 +1,11 @@
+{
+	"title"		:	"[TTT2] Amnesiac [ROLE]",
+	"type"		:	"ServerContent",
+    "tags"		:	[ "roleplay", "fun" ],
+    "ignore"    : [
+        ".git/*",
+        ".gitignore",
+        "README.md",
+		"ttt2-role_amne.jpg"
+    ]
+}
