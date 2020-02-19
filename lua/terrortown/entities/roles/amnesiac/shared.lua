@@ -41,6 +41,8 @@ if SERVER then
 
 	util.AddNetworkString("ttt2_role_amne_conversionpopup")
 
+
+
 	hook.Add("TTTBodyFound", "TTT2AmneFoundCorpse", function(ply, deadply, rag)
 		if not IsValid(ply) or not IsValid(deadply) then return end                 -- In case of disconect shinanigans     
   
@@ -49,6 +51,8 @@ if SERVER then
 		ply:SetRole(deadply:GetSubRole(), deadply:GetTeam())                        -- Get role and team from dead players body
 		SendFullStateUpdate()                                                       -- Send update to teammembers
 	  
+		-- serverside popup event integration
+
 		if not GetConVar("ttt2_amnesiac_showpopup"):GetBool() then return end
 
 		net.Start("ttt2_role_amne_conversionpopup")
@@ -96,6 +100,8 @@ if SERVER then
 		ply:RemoveEquipmentItem("item_ttt_radar")
 	end
 end
+
+-- Adding a popup event clientside
 
 if CLIENT then
 
