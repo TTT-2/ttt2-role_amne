@@ -11,4 +11,5 @@ You will receive the role of the first player you confirm this round.]]
 
 -- OTHER ROLE LANGUAGE STRINGS
 L["ttt2_role_amnesiac_popuptitle"] = "An Amnesiac has remembered that they were {role}"
-L["ttt2_role_amnesiac_targetid"] = "Confirm to receive their role"
+L["ttt2_role_amnesiac_targetid"] = "Search to receive their role"
+L["ttt2_role_amnesiac_targetid_subtitle"] = "Press [{usekey}] or [{walkkey} + {usekey}] to receive role."

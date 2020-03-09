@@ -38,23 +38,32 @@ end
 if SERVER then
 	util.AddNetworkString("ttt2_role_amne_conversionpopup")
 
-	hook.Add("TTTBodyFound", "TTT2AmneFoundCorpse", function(ply, deadply, rag)
-		-- In case of disconect shinanigans     
+	hook.Add("TTTCanSearchCorpse", "TTT2AmneIdentifyCorpse", function(ply, rag)
+		local deadply = player.GetBySteamID64(rag.sid64)
+
+		-- In case of disconect shinanigans
 		if not IsValid(ply) or not IsValid(deadply) then return end
 
 		-- If role is not Amnesiac nothing happens
 		if ply:GetSubRole() ~= ROLE_AMNESIAC then return end
+
+		-- make sure that it only works if the ragdoll is unconfirmed or convar is set to false
+		if (CORPSE.GetFound(ent, false) or not DetectiveMode()) and GetConVar("ttt2_amnesiac_limit_to_unconfirmed"):GetBool() then return end
 
 		-- Get role and team from dead players body
 		ply:SetRole(deadply:GetSubRole(), deadply:GetTeam())
 		SendFullStateUpdate()
 
 		-- serverside popup event integration
-		if not GetConVar("ttt2_amnesiac_showpopup"):GetBool() then return end
+		if GetConVar("ttt2_amnesiac_showpopup"):GetBool() then
+			net.Start("ttt2_role_amne_conversionpopup")
+			net.WriteUInt(ply:GetSubRole(), ROLE_BITS)
+			net.Broadcast()
+		end
 
-		net.Start("ttt2_role_amne_conversionpopup")
-		net.WriteUInt(ply:GetSubRole(), ROLE_BITS)
-		net.Broadcast()
+		-- return convar value that decides if the player should be able to
+		-- confirm the ragdoll
+		return GetConVar("ttt2_amnesiac_confim_player"):GetBool()
 	end)
 end
 
