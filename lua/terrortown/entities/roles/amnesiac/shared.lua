@@ -2,17 +2,17 @@
 
 if SERVER then
 	AddCSLuaFile()
-	
-	resource.AddFile('materials/vgui/ttt/dynamic/roles/icon_amne.vmt')
-	resource.AddFile('materials/vgui/ttt/icon_amnic.vmt')
+
+	resource.AddFile("materials/vgui/ttt/dynamic/roles/icon_amne.vmt")
+	resource.AddFile("materials/vgui/ttt/icon_amnic.vmt")
 end
 
 -- General settings
 
 function ROLE:PreInitialize()
 	self.color = Color(132, 112, 255, 255) -- rolecolour
-	
-	self.abbr = 'amne' -- Abbreviation
+
+	self.abbr = "amne" -- Abbreviation
 	self.unknownTeam = true -- No teamchat
 	self.defaultTeam = TEAM_NONE -- no team, own team
 	self.preventFindCredits = true
@@ -20,10 +20,9 @@ function ROLE:PreInitialize()
 	self.preventTraitorAloneCredits = true
 	self.preventWin = true -- cannot win unless he switches roles
 	self.scoreKillsMultiplier       = -12
-    self.scoreTeamKillsMultiplier   = -16
-	
-	-- ULX convars
+	self.scoreTeamKillsMultiplier   = -16
 
+	-- ULX convars
 	self.conVarData = {
 		pct = 0.17, -- necessary: percentage of getting this role selected (per player)
 		maximum = 1, -- maximum amount of roles in a round
@@ -36,34 +35,39 @@ function ROLE:PreInitialize()
 end
 
 -- Role specific code
-
 if SERVER then
-
 	util.AddNetworkString("ttt2_role_amne_conversionpopup")
 
+	hook.Add("TTTCanSearchCorpse", "TTT2AmneIdentifyCorpse", function(ply, rag)
+		local deadply = player.GetBySteamID64(rag.sid64)
 
+		-- In case of disconect shinanigans
+		if not IsValid(ply) or not IsValid(deadply) then return end
 
-	hook.Add("TTTBodyFound", "TTT2AmneFoundCorpse", function(ply, deadply, rag)
-		if not IsValid(ply) or not IsValid(deadply) then return end                 -- In case of disconect shinanigans     
-  
-		if ply:GetSubRole() ~= ROLE_AMNESIAC then return end                        -- If role is not Amnesiac nothing happens
-  
-		ply:SetRole(deadply:GetSubRole(), deadply:GetTeam())                        -- Get role and team from dead players body
-		SendFullStateUpdate()                                                       -- Send update to teammembers
-	  
+		-- If role is not Amnesiac nothing happens
+		if ply:GetSubRole() ~= ROLE_AMNESIAC then return end
+
+		-- make sure that it only works if the ragdoll is unconfirmed or convar is set to false
+		if (CORPSE.GetFound(ent, false) or not DetectiveMode()) and GetConVar("ttt2_amnesiac_limit_to_unconfirmed"):GetBool() then return end
+
+		-- Get role and team from dead players body
+		ply:SetRole(deadply:GetSubRole(), deadply:GetTeam())
+		SendFullStateUpdate()
+
 		-- serverside popup event integration
+		if GetConVar("ttt2_amnesiac_showpopup"):GetBool() then
+			net.Start("ttt2_role_amne_conversionpopup")
+			net.WriteUInt(ply:GetSubRole(), ROLE_BITS)
+			net.Broadcast()
+		end
 
-		if not GetConVar("ttt2_amnesiac_showpopup"):GetBool() then return end
-
-		net.Start("ttt2_role_amne_conversionpopup")
-		net.WriteUInt(ply:GetSubRole(), ROLE_BITS)
-		net.Broadcast()
-
+		-- return convar value that decides if the player should be able to
+		-- confirm the ragdoll
+		return GetConVar("ttt2_amnesiac_confim_player"):GetBool()
 	end)
 end
 
 -- Adding custom Radar
-
 if SERVER then
 	ROLE.CustomRadar = function(ply)
 		local targets = {}
@@ -102,15 +106,12 @@ if SERVER then
 end
 
 -- Adding a popup event clientside
-
 if CLIENT then
-
 	net.Receive("ttt2_role_amne_conversionpopup", function()
 		local roleid = net.ReadUInt(ROLE_BITS)
 		local roledata = roles.GetByIndex(roleid)
-		
+
 		EPOP:AddMessage({text = LANG.GetParamTranslation("ttt2_role_amnesiac_popuptitle", {role = LANG.TryTranslation(roledata.name)}), color = AMNESIAC.color}, "", 6)
 	end)
-
 end
 

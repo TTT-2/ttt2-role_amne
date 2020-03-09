@@ -11,4 +11,5 @@ Du nimmst die Rolle des ersten von dir aufgedeckten Terroristen an.]]
 
 -- OTHER ROLE LANGUAGE STRINGS
 L["ttt2_role_amnesiac_popuptitle"] = "Ein Amnesist hat sich daran errinert, ein {role} gewesen zu sein"
-L["ttt2_role_amnesiac_targetid"] = "Identifizieren um die Rolle zu übernehmen"
+L["ttt2_role_amnesiac_targetid"] = "Untersuchen um die Rolle zu übernehmen"
+L["ttt2_role_amnesiac_targetid_subtitle"] = "Drücke [{usekey}] oder [{walkkey} + {usekey}] um Rolle zu erhalten."

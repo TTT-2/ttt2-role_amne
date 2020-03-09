@@ -1,8 +1,12 @@
 -- Target ID integration for an info popup when looking at an unconfirmed dead players body
 local revivematerial = Material("vgui/ttt/icon_amnic")
 
-hook.Add("TTTRenderEntityInfo", "ttt_role_amnesiac_targetid", function(tData)
+local key_params = {
+	usekey = Key("+use", "USE"),
+	walkkey = Key("+walk", "WALK")
+}
 
+hook.Add("TTTRenderEntityInfo", "ttt_role_amnesiac_targetid", function(tData)
 	local client = LocalPlayer()
 	local ent = tData:GetEntity()
 
@@ -15,9 +19,13 @@ hook.Add("TTTRenderEntityInfo", "ttt_role_amnesiac_targetid", function(tData)
 	if client:GetSubRole() ~= ROLE_AMNESIAC then return end
 
 	local corpse_found = CORPSE.GetFound(ent, false) or not DetectiveMode()
-	
-	if corpse_found then return end
-	
+
+	if corpse_found and GetGlobalBool("ttt2_amnesiac_limit_to_unconfirmed") then return end
+
+	if not GetGlobalBool("ttt2_amnesiac_confim_player") then
+		tData:SetSubtitle(LANG.GetParamTranslation("ttt2_role_amnesiac_targetid_subtitle", key_params))
+	end
+
 	tData:AddDescriptionLine(LANG.TryTranslation("ttt2_role_amnesiac_targetid"), AMNESIAC.color)
 
 	tData:AddIcon(revivematerial, AMNESIAC.color)
