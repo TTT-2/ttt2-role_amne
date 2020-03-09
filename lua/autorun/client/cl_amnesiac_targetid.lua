@@ -2,7 +2,6 @@
 local revivematerial = Material("vgui/ttt/icon_amnic")
 
 hook.Add("TTTRenderEntityInfo", "ttt_role_amnesiac_targetid", function(tData)
-
 	local client = LocalPlayer()
 	local ent = tData:GetEntity()
 
@@ -15,9 +14,9 @@ hook.Add("TTTRenderEntityInfo", "ttt_role_amnesiac_targetid", function(tData)
 	if client:GetSubRole() ~= ROLE_AMNESIAC then return end
 
 	local corpse_found = CORPSE.GetFound(ent, false) or not DetectiveMode()
-	
+
 	if corpse_found then return end
-	
+
 	tData:AddDescriptionLine(LANG.TryTranslation("ttt2_role_amnesiac_targetid"), AMNESIAC.color)
 
 	tData:AddIcon(revivematerial, AMNESIAC.color)
