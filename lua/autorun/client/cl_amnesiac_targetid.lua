@@ -1,14 +1,14 @@
 -- Target ID integration for an info popup when looking at an unconfirmed dead players body
 local revivematerial = Material("vgui/ttt/icon_amnic")
 
-local key_params = {
-	usekey = Key("+use", "USE"),
-	walkkey = Key("+walk", "WALK")
-}
-
 hook.Add("TTTRenderEntityInfo", "ttt_role_amnesiac_targetid", function(tData)
 	local client = LocalPlayer()
 	local ent = tData:GetEntity()
+
+	local key_params = {
+		usekey = Key("+use", "USE"),
+		walkkey = Key("+walk", "WALK")
+	}
 
 	-- has to be a ragdoll
 	if not IsValid(ent) or ent:GetClass() ~= "prop_ragdoll" then return end
