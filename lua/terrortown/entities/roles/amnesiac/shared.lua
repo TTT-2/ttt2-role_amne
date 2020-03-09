@@ -48,7 +48,7 @@ if SERVER then
 		if ply:GetSubRole() ~= ROLE_AMNESIAC then return end
 
 		-- make sure that it only works if the ragdoll is unconfirmed or convar is set to false
-		if (CORPSE.GetFound(ent, false) or not DetectiveMode()) and GetConVar("ttt2_amnesiac_limit_to_unconfirmed"):GetBool() then return end
+		if (CORPSE.GetFound(rag, false) or not DetectiveMode()) and GetConVar("ttt2_amnesiac_limit_to_unconfirmed"):GetBool() then return end
 
 		-- Get role and team from dead players body
 		ply:SetRole(deadply:GetSubRole(), deadply:GetTeam())
