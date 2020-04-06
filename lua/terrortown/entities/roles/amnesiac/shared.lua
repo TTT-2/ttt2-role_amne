@@ -63,7 +63,7 @@ if SERVER then
 
 		-- return convar value that decides if the player should be able to
 		-- confirm the ragdoll
-		return GetConVar("ttt2_amnesiac_confim_player"):GetBool()
+		return GetConVar("ttt2_amnesiac_confirm_player"):GetBool()
 	end)
 end
 

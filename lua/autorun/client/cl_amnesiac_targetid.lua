@@ -22,7 +22,7 @@ hook.Add("TTTRenderEntityInfo", "ttt_role_amnesiac_targetid", function(tData)
 
 	if corpse_found and GetGlobalBool("ttt2_amnesiac_limit_to_unconfirmed") then return end
 
-	if not GetGlobalBool("ttt2_amnesiac_confim_player") then
+	if not GetGlobalBool("ttt2_amnesiac_confirm_player") then
 		tData:SetSubtitle(LANG.GetParamTranslation("ttt2_role_amnesiac_targetid_subtitle", key_params))
 	end
 
