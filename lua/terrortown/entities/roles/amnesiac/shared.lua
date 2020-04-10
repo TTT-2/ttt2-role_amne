@@ -77,6 +77,8 @@ if SERVER then
 		for _, t in ipairs(scan_ents) do
 			if not t.player_ragdoll then continue end
 
+			if (CORPSE.GetFound(t, false) or not DetectiveMode()) and GetConVar("ttt2_amnesiac_limit_to_unconfirmed"):GetBool() then continue end
+
 			local pos = t:LocalToWorld(t:OBBCenter())
 
 			pos.x = mathRound(pos.x)
