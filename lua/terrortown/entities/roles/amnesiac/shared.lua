@@ -41,6 +41,9 @@ if SERVER then
 	hook.Add("TTTCanSearchCorpse", "TTT2AmneIdentifyCorpse", function(ply, rag)
 		local deadply = player.GetBySteamID64(rag.sid64)
 
+		-- In case, that the Amnesiac is dead, disable this ability.
+		if not ply:Alive() then return end
+
 		-- In case of disconect shinanigans
 		if not IsValid(ply) or not IsValid(deadply) then return end
 
