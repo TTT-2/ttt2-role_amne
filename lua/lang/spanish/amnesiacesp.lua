@@ -1,4 +1,4 @@
-L = LANG.GetLanguageTableReference("spanish")
+L = LANG.GetLanguageTableReference("Español")
 
 -- GENERAL ROLE LANGUAGE STRINGS
 L[AMNESIAC.name] = "Amnésico"
