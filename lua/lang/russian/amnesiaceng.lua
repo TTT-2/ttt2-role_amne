@@ -2,9 +2,9 @@ L = LANG.GetLanguageTableReference("Русский")
 
 -- GENERAL ROLE LANGUAGE STRINGS
 L[AMNESIAC.name] = "Амнезиак"
-L["info_popup_" .. AMNESIAC.name] = [[Вы страдаете Амнезией, попробуйте вспомнить, кем вы были, подтверждая других!]]
-L["body_found_" .. AMNESIAC.abbr] = "Он был Амнезиаком."
-L["search_role_" .. AMNESIAC.abbr] = "У этого человека была Амнезия!"
+L["info_popup_" .. AMNESIAC.name] = [[Вы страдаете амнезией, попробуйте вспомнить, кем вы были, подтверждая других!]]
+L["body_found_" .. AMNESIAC.abbr] = "Он был амнезиаком."
+L["search_role_" .. AMNESIAC.abbr] = "У этого человека была амнезия!"
 L["target_" .. AMNESIAC.name] = "Амнезиак"
 L["ttt2_desc_" .. AMNESIAC.name] = [[Амнезиак пытается найти цель для себя, чтобы справиться с этим, вам нужно подтвердить тела других террористов.
 Вы получите роль первого игрока, которого вы подтвердите в этом раунде.]]
