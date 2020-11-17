@@ -6,7 +6,7 @@ L["info_popup_" .. AMNESIAC.name] = [[Sei uno Smemorato, prova a ricordarti che 
 L["body_found_" .. AMNESIAC.abbr] = "Era uno Smemorato."
 L["search_role_" .. AMNESIAC.abbr] = "Questa persona era uno Smemorato!"
 L["target_" .. AMNESIAC.name] = "Smemorato"
-L["ttt2_desc_" .. AMNESIAC.name] = [[Il Smemorato sta cercando di scoprire chi era, per farlo deve identificare i cadaveri degli altri.
+L["ttt2_desc_" .. AMNESIAC.name] = [[Lo Smemorato sta cercando di scoprire chi era, per farlo deve identificare i cadaveri degli altri.
 Riceverai il ruolo della prima persona che identificherai questo round.]]
 
 -- OTHER ROLE LANGUAGE STRINGS
