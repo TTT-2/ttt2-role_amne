@@ -10,17 +10,20 @@ end
 -- General settings
 
 function ROLE:PreInitialize()
-	self.color = Color(132, 112, 255, 255) -- rolecolour
+	self.color = Color(132, 112, 255, 255)
 
-	self.abbr = "amne" -- Abbreviation
-	self.unknownTeam = true -- No teamchat
-	self.defaultTeam = TEAM_NONE -- no team, own team
+	self.abbr = "amne"
+	self.unknownTeam = true
+	self.defaultTeam = TEAM_NONE
 	self.preventFindCredits = true
 	self.preventKillCredits = true
 	self.preventTraitorAloneCredits = true
-	self.preventWin = true -- cannot win unless he switches roles
-	self.scoreKillsMultiplier       = -12
-	self.scoreTeamKillsMultiplier   = -16
+	self.preventWin = true
+
+	self.score.killsMultiplier = -12
+	self.score.teamKillsMultiplier = -16
+	self.score.allSurviveBonusMultiplier = -2
+	self.score.timelimitMultiplier = -2
 
 	-- ULX convars
 	self.conVarData = {
