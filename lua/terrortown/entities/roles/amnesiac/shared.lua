@@ -1,14 +1,12 @@
--- Icon Materials
-
 if SERVER then
 	AddCSLuaFile()
 
+	-- Icon Materials
 	resource.AddFile("materials/vgui/ttt/dynamic/roles/icon_amne.vmt")
 	resource.AddFile("materials/vgui/ttt/icon_amnic.vmt")
 end
 
 -- General settings
-
 function ROLE:PreInitialize()
 	self.color = Color(132, 112, 255, 255)
 
@@ -46,7 +44,7 @@ if SERVER then
 
 		-- In case, that the Amnesiac is dead, disable his ability to change. Since.. he's dead. ._.
 		if not ply:Alive() then return end
-		
+
 		-- In case of disconect shinanigans
 		if not IsValid(ply) or not IsValid(deadply) then return end
 
@@ -122,4 +120,3 @@ if CLIENT then
 		EPOP:AddMessage({text = LANG.GetParamTranslation("ttt2_role_amnesiac_popuptitle", {role = LANG.TryTranslation(roledata.name)}), color = AMNESIAC.color}, "", 6)
 	end)
 end
-
