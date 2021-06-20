@@ -5,6 +5,7 @@
     "ignore"    : [
         ".git/*",
         ".gitignore",
+		".gitattributes",
         "README.md",
 		"ttt2-role_amne.jpg"
     ]
