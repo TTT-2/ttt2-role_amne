@@ -111,8 +111,28 @@ if SERVER then
 	end
 end
 
+-- F1 menu convars
 -- Adding a popup event clientside
 if CLIENT then
+	function ROLE:AddToSettingsMenu(parent)
+		local form = vgui.CreateTTT2Form(parent, "header_roles_additional")
+
+		form:MakeCheckBox({
+			serverConvar = "ttt2_amnesiac_showpopup",
+			label = "label_amne_showpopup"
+		})
+
+		form:MakeCheckBox({
+			serverConvar = "ttt2_amnesiac_confirm_player",
+			label = "label_amne_confirm_player"
+		})
+
+		form:MakeCheckBox({
+			serverConvar = "ttt2_amnesiac_limit_to_unconfirmed",
+			label = "label_amne_limit_to_unconfirmed"
+		})
+	end
+
 	net.Receive("ttt2_role_amne_conversionpopup", function()
 		local roleid = net.ReadUInt(ROLE_BITS)
 		local roledata = roles.GetByIndex(roleid)

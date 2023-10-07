@@ -1,4 +1,4 @@
-L = LANG.GetLanguageTableReference("de")
+local L = LANG.GetLanguageTableReference("de")
 
 -- GENERAL ROLE LANGUAGE STRINGS
 L[AMNESIAC.name] = "Amnesist"
@@ -13,3 +13,7 @@ Du nimmst die Rolle des ersten von dir aufgedeckten Terroristen an.]]
 L["ttt2_role_amnesiac_popuptitle"] = "Ein Amnesist hat sich daran errinert, ein {role} gewesen zu sein"
 L["ttt2_role_amnesiac_targetid"] = "Untersuchen um die Rolle zu übernehmen"
 L["ttt2_role_amnesiac_targetid_subtitle"] = "Drücke [{usekey}] oder [{walkkey} + {usekey}] um Rolle zu erhalten."
+
+L["label_amne_showpopup"] = "Zeige ein Popup wenn ein Amnesist sich an seine Rolle erinnert hat"
+L["label_amne_confirm_player"] = "Decke die Rolle einer Leiche auf um die Rolle zu erhalten"
+L["label_amne_limit_to_unconfirmed"] = "Es zählen nur nicht aufgedeckte Leichen"
