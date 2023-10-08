@@ -1,4 +1,4 @@
-L = LANG.GetLanguageTableReference("en")
+local L = LANG.GetLanguageTableReference("en")
 
 -- GENERAL ROLE LANGUAGE STRINGS
 L[AMNESIAC.name] = "Amnesiac"
@@ -13,3 +13,7 @@ You will receive the role of the first player you confirm during this round.]]
 L["ttt2_role_amnesiac_popuptitle"] = "An Amnesiac has remembered that they were {role}"
 L["ttt2_role_amnesiac_targetid"] = "Search to receive their role"
 L["ttt2_role_amnesiac_targetid_subtitle"] = "Press [{usekey}] or [{walkkey} + {usekey}] to receive role."
+
+L["label_amne_showpopup"] = "Show global popup if an Amnesiac receives their role"
+L["label_amne_confirm_player"] = "Has to confirm a body to get a role"
+L["label_amne_limit_to_unconfirmed"] = "Works only with unconfirmed bodies"
