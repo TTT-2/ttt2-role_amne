@@ -122,14 +122,15 @@ if CLIENT then
 			label = "label_amne_showpopup"
 		})
 
-		form:MakeCheckBox({
+		local enbConfirm = form:MakeCheckBox({
 			serverConvar = "ttt2_amnesiac_confirm_player",
 			label = "label_amne_confirm_player"
 		})
 
 		form:MakeCheckBox({
 			serverConvar = "ttt2_amnesiac_limit_to_unconfirmed",
-			label = "label_amne_limit_to_unconfirmed"
+			label = "label_amne_limit_to_unconfirmed",
+			master = enbConfirm
 		})
 	end
 

@@ -14,6 +14,6 @@ L["ttt2_role_amnesiac_popuptitle"] = "An Amnesiac has remembered that they were 
 L["ttt2_role_amnesiac_targetid"] = "Search to receive their role"
 L["ttt2_role_amnesiac_targetid_subtitle"] = "Press [{usekey}] or [{walkkey} + {usekey}] to receive role."
 
-L["label_amne_showpopup"] = "Show popup if an Amnesiac has remembered his role"
-L["label_amne_confirm_player"] = "Confirm a body to get the role"
-L["label_amne_limit_to_unconfirmed"] = "Only unconfirmed bodies count"
+L["label_amne_showpopup"] = "Show global popup if an Amnesiac receives their role"
+L["label_amne_confirm_player"] = "Has to confirm a body to get a role"
+L["label_amne_limit_to_unconfirmed"] = "Works only with unconfirmed bodies"

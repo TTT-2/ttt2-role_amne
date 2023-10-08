@@ -14,6 +14,6 @@ L["ttt2_role_amnesiac_popuptitle"] = "Ein Amnesist hat sich daran errinert, ein 
 L["ttt2_role_amnesiac_targetid"] = "Untersuchen um die Rolle zu übernehmen"
 L["ttt2_role_amnesiac_targetid_subtitle"] = "Drücke [{usekey}] oder [{walkkey} + {usekey}] um Rolle zu erhalten."
 
-L["label_amne_showpopup"] = "Zeige ein Popup wenn ein Amnesist sich an seine Rolle erinnert hat"
-L["label_amne_confirm_player"] = "Decke die Rolle einer Leiche auf um die Rolle zu erhalten"
-L["label_amne_limit_to_unconfirmed"] = "Es zählen nur nicht aufgedeckte Leichen"
+L["label_amne_showpopup"] = "Zeige jedem ein Popup wenn Amnesist Rolle bekommt"
+L["label_amne_confirm_player"] = "Muss Leiche untersuchen, um eine Rolle zu erhalten"
+L["label_amne_limit_to_unconfirmed"] = "Es zählen nur nicht untersuchte Leichen"
